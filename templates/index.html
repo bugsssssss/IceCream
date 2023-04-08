@@ -1,0 +1,323 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css"
+			rel="stylesheet"
+		/>
+
+		<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+		<title>Jumping Knick-knacks</title>
+	</head>
+	<body>
+		<!-- Header -->
+		<header>
+			<section class="withSection">
+				<div class="headerSection">
+					<div class="leftHeaderSection">
+						<div class="headerLogoImg">
+							<img src="{% static 'img/1.png' %}" alt="" />
+						</div>
+						<div class="headerLogoText">
+							<a href="{% url 'index' %}">Jumping Knick-knacks</a>
+						</div>
+					</div>
+					<div class="rightHeaderSection">
+						<div class="rightHeaderLink active">
+							<a href="{% url 'index' %}">Главная</a>
+						</div>
+						<div class="rightHeaderLink">
+							<a href="#">О нас</a>
+						</div>
+						<div class="rightHeaderLink">
+							<a href="#">Контакты</a>
+						</div>
+						<div class="rightHeaderLink">
+							<a href="#">Акции</a>
+						</div>
+						<div
+							class="rightHeaderLink btnHead"
+							style="display: flex; gap: 20px; align-items: center"
+						>
+							{% if user.is_authenticated %}
+							<a href="#">{{user.username}}</a>
+							<a
+								class="linkEnterBtn"
+								style="color: #fff"
+								href="{% url 'logout' %}"
+								>Выйти</a
+							>
+							{% else %}
+							<a
+								class="linkEnterBtn"
+								style="color: #fff"
+								href="{% url 'login' %}"
+								>Войти</a
+							>
+							{% endif %}
+						</div>
+						<div class="rightHeaderLink imgShopBlock">
+							<a class="imgShop" href="#"
+								><img
+									src="{% static 'img/fi-br-shopping-cart (1).png' %}"
+									alt=""
+							/></a>
+						</div>
+					</div>
+					<div class="headerNavBar">
+						<div class="menu-btn">
+							<span></span>
+							<span></span>
+							<span></span>
+						</div>
+					</div>
+					<nav class="menu">
+						<ul>
+							<li><a class="nav_menu" href="#">Главная</a></li>
+							<li><a class="nav_menu" href="#">О нас</a></li>
+							<li><a class="nav_menu" href="#">Контакты</a></li>
+							<li><a class="nav_menu" href="#">Акции</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
+		</header>
+		<main>
+			<section class="withSection">
+				<div class="splide" role="group" aria-label="Splide Basic HTML Example">
+					<div class="splide__track">
+						<ul class="splide__list">
+							<li class="splide__slide">
+								<img src="{% static 'img/Rectangle 15 (1).jpg' %}" alt="" />
+							</li>
+							<li class="splide__slide">
+								<img src="{% static 'img/Rectangle 15 (1).jpg' %}" alt="" />
+							</li>
+							<li class="splide__slide">
+								<img src="{% static 'img/Rectangle 15 (1).jpg' %}" alt="" />
+							</li>
+							<li class="splide__slide">
+								<img src="{% static 'img/Rectangle 15 (1).jpg' %}" alt="" />
+							</li>
+						</ul>
+					</div>
+					<div class="newSummer">
+						<div class="blockSummer">
+							<h1>Летняя новинка!</h1>
+						</div>
+						<div class="paySummer">
+							<a href="#">Заказать</a>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="withSection">
+				<div class="summerNews">
+					<div class="summerNewsTextBtn">
+						<h2>Летние новинки <span>мороженного</span></h2>
+						<p>
+							Кстати, независимые государства могут быть объявлены нарушающими
+							общечеловеческие нормы этики и морали.
+						</p>
+						<div class="btnMore">
+							<a href="#">Подробнее</a>
+						</div>
+					</div>
+
+					{% for i in ice_creams %}
+					<div class="summerNewsPhoto">
+						<div class="summerPhoto">
+							<img
+								src="{{i.image.url}}"
+								alt=""
+								style="width: 251; height: 284px"
+							/>
+						</div>
+						<p>{{i.name}}</p>
+						<span>{{i.description}}</span>
+						<div class="nameIcecream">
+							<span>{{i.category}}</span>
+						</div>
+						<div class="howManyGramm">
+							<span>{{i.weight}} грамм</span>
+						</div>
+					</div>
+					{% endfor %} {% comment %}
+					<div class="summerNewsPhoto">
+						<div class="summerPhoto">
+							<img src="{% static 'img/Rectangle 17 (1).jpg' %}" alt="" />
+						</div>
+						<p>Шербет лимоновый</p>
+						<span>Пломбир, лимон, лимоновыйй сироп.</span>
+						<div class="nameIcecream">
+							<span>Клубника</span>
+						</div>
+						<div class="howManyGramm">
+							<span>300 грамм</span>
+						</div>
+					</div>
+					<div class="summerNewsPhoto">
+						<div class="summerPhoto">
+							<img src="{% static 'img/Rectangle 19 (1).jpg' %}" alt="" />
+						</div>
+						<p>Мятный рожок</p>
+						<span>Пломбир мята, вафельнвый рожок.</span>
+						<div class="nameIcecream">
+							<span>Мята</span>
+						</div>
+						<div class="howManyGramm">
+							<span>100 грамм</span>
+						</div>
+					</div>
+					{% endcomment %}
+				</div>
+			</section>
+			<!-- iseHand -->
+			<section class="iceHand">
+				<img class="handImg" src="{% static 'img/Hand.png' %}" alt="" />
+				<div class="iceHandChild">
+					<div class="ihcFirst">
+						<p>Мороженное</p>
+						<p class="strawberry">Клубничное</p>
+					</div>
+					<div class="ihcSecond">
+						<img src="{% static 'img/strawberryP3.svg' %}" alt="" />
+						<img src="{% static 'img/bulbsP3.svg' %}" alt="" />
+						<img src="{% static 'img/ice-creamP3.svg' %}" alt="" />
+					</div>
+					<span
+						>И нет сомнений, что акционеры крупнейших компаний объединены в
+						целые кластеры себе подобных. А ещё некоторые особенности внутренней
+						политики заблокированы в рамках своих собственных рациональных
+						ограничений.
+					</span>
+				</div>
+			</section>
+			<!-- MRTim -->
+			<section class="MRTim">
+				<div class="MRTimLeft">
+					<div class="logo">
+						<div>
+							<p class="logoOne">EST.</p>
+							<p class="logoOne red">1950</p>
+							<p class="logoTwo">Ташкент</p>
+						</div>
+						<img src="{% static 'img/logo (1).png' %}" alt="" />
+					</div>
+					<span
+						>Но разбавленное изрядной долей эмпатии, рациональное мышление
+						требует определения и уточнения благоприятных перспектив. Как
+						принято считать, некоторые особенности внутренней политики являются
+						только методом политического участия и указаны как претенденты на
+						роль ключевых факторов.</span
+					>
+					<div class="btnMore">
+						<a href="#">Подробнее</a>
+					</div>
+				</div>
+				<div class="MRTimRight">
+					<img class="MRTPhoto" src="{% static 'img/MRTim (1).png' %}" alt="" />
+					<div class="MRTimAbout">
+						<div>
+							<h3>MR Tim</h3>
+							<p>Основатель</p>
+						</div>
+						<img src="{% static 'img/stick.png' %}" alt="" />
+						<span
+							>С учётом сложившейся международной обстановки, внедрение
+							современных методик, а также свежий взгляд на привычные вещи —
+							безусловно открывает новые
+						</span>
+					</div>
+				</div>
+			</section>
+			<!-- eMail -->
+			<section class="eMail">
+				<div class="emailChild">
+					<p class="emailChildOne">Подпишитесь на новости и акции</p>
+					<p class="emailChildTwo">Jumping Knick-knacks</p>
+					<div class="emailSend">
+						<input type="email" placeholder="Example@gmail.com" />
+						<div class="btnMore">
+							<a href="#">Отправить</a>
+						</div>
+					</div>
+				</div>
+				<img
+					class="trafficLightHand"
+					src="{% static 'img/trafficLightHand.png' %}"
+					alt=""
+				/>
+			</section>
+		</main>
+		<footer>
+			<div class="footerInfo">
+				<div class="flexInfo">
+					<div class="footerLeft">
+						<span
+							>Разнообразный и богатый опыт говорит нам, что выбранный нами
+							инновационный</span
+						>
+						<div class="footerA">
+							<a href="">Главная</a>
+							<a href="">О нас</a>
+							<a href="">Контакты</a>
+							<a href="">Акции</a>
+						</div>
+						<div class="footerCard">
+							<img src="{% static 'img/visa.svg' %}" alt="" />
+							<img src="{% static 'img/mastercard.svg' %}" alt="" />
+							<img src="{% static 'img/unionpay.svg' %}" alt="" />
+						</div>
+					</div>
+					<div class="footerMiddle">
+						<span>Jumping_Knick_knacks@gamil.com</span>
+						<span><a href="tel:+998901234567">+998 90 123 45 67</a></span>
+						<div class="footerCMM">
+							<i class="fa-brands fa-facebook" style="color: #ffffff"></i>
+							<i class="fa-brands fa-vk" style="color: #ffffff"></i>
+							<i class="fa-brands fa-instagram" style="color: #ffffff"></i>
+							<i class="fa-brands fa-twitter" style="color: #ffffff"></i>
+							<i class="fa-brands fa-youtube" style="color: #ffffff"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footerMap" style="position: relative; overflow: hidden">
+				<a
+					href="https://yandex.uz/maps/10335/tashkent/?utm_medium=mapframe&utm_source=maps"
+					style="color: #eee; font-size: 12px; position: absolute; top: 0px"
+					>Ташкент</a
+				><a
+					href="https://yandex.uz/maps/10335/tashkent/?feedback=map%2Fedit&feedback-context=map.controls&ll=69.282891%2C41.312665&utm_medium=mapframe&utm_source=maps&z=14.8"
+					style="color: #eee; font-size: 12px; position: absolute; top: 14px"
+					>Яндекс Карты</a
+				><iframe
+					src="https://yandex.uz/map-widget/v1/?feedback=map%2Fedit&feedback-context=map.controls&ll=69.282891%2C41.312665&z=14.8"
+					frameborder="1"
+					allowfullscreen="true"
+					style="position: relative"
+				></iframe>
+			</div>
+		</footer>
+
+		<script
+			src="https://kit.fontawesome.com/4a6c3c6285.js"
+			crossorigin="anonymous"
+		></script>
+		<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+
+		<script src="{% static 'js/script.js' %}"></script>
+	</body>
+</html>
