@@ -43,6 +43,7 @@ def registration(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.save()
+            login(request, user)
             return redirect('index')
     context = {'form': form}
     return render(request, 'signup.html', context)

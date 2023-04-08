@@ -21,21 +21,26 @@
 		<title>Jumping Knick-knacks</title>
 	</head>
 	<body>
-		<h1>Sign up Page</h1>
-
 		<div class="wrapperPopUp__two active__wrapperPopUp">
 			<div class="enterPopUp">
 				<form method="POST">
 					{% csrf_token %}
 					<h2>Зарегистрироватся</h2>
 					<div class="emailSend">{{form.username}}</div>
+					{{form.username.errors}}
 					<div class="emailSend">{{form.password1}}</div>
+					{{form.password1.errors}}
 					<div class="emailSend">{{form.password2}}</div>
+					{{form.password2.errors}}
+
 					<div>
 						<input class="subPopUp" type="submit" value="Создать" />
 					</div>
 					<a class="aEnt" href="{% url 'login' %}">Войти</a>
 				</form>
+				<div class="closePopUp_div">
+					<a href="{% url 'index' %}" id="closePopUp">x</a>
+				</div>
 			</div>
 		</div>
 		<!-- Header -->

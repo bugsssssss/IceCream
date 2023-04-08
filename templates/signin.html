@@ -21,8 +21,6 @@
 		<title>Jumping Knick-knacks | Login</title>
 	</head>
 	<body>
-		<h1>Login Page</h1>
-
 		<div class="wrapperPopUp__one active__wrapperPopUp">
 			<div class="enterPopUp">
 				<form method="POST">
@@ -37,6 +35,9 @@
 					<br />
 					<a class="aReg" href="{% url 'registration' %}">Зарегистрироваться</a>
 				</form>
+				<div class="closePopUp_div">
+					<a href="{% url 'index' %}" id="closePopUp">x</a>
+				</div>
 			</div>
 		</div>
 		<!-- Header -->

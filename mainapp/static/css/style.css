@@ -64,6 +64,7 @@ p {
 	background: #ffffff;
 	box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
 	border-radius: 25px;
+	position: relative;
 }
 .enterPopUp h2 {
 	font-weight: 700;
@@ -781,4 +782,21 @@ footer {
 .footerCard {
 	display: flex;
 	gap: 34px;
+}
+.closePopUp_div {
+	font-size: 30px;
+	width: 50px;
+	height: 50px;
+	position: absolute;
+	top: 20px;
+	right: 40px;
+	margin-top: 10px;
+}
+
+.closePopUp_div a {
+	font-size: 30px;
+	text-decoration: none;
+}
+#closePopUp:hover {
+	text-decoration: none;
 }
